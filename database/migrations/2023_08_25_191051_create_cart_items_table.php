@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->foreign('cart_id')->references('id')->on('shopping_carts');
             $table->foreign('product_id')->references('id')->on('products');
+            $table->decimal('subtotal', 10, 2); 
             $table->timestamps();
         });
     }

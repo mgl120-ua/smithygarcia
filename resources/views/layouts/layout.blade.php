@@ -21,7 +21,7 @@
 
       <ul class="nav-menu-right">
           <li class="nav-item">
-            <a class="nav-link" href="/carrito">CARRITO </a>
+            <a class="nav-link" href="/cart">CARRITO </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login" >CUENTA</a>

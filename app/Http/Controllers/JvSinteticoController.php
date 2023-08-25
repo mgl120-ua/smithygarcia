@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\JvSintetico;
+use App\Models\Product;
 
 class JvSinteticoController extends Controller
 {
     //
     public function index()
     {
-        $estandar = JvSintetico::where('category', 'Estandar')->get();
-        $ignifugo = JvSintetico::where('category', 'Ignifugo')->get();
+        $estandar = Product::where('description', 'Estandar')->get();
+        $ignifugo = Product::where('description', 'Ignifugo')->get();
 
         return view('products.jvSintetico', [
             'estandar' => $estandar,

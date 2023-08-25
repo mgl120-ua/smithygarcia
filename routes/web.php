@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PanelsController;
-use App\Http\Controllers\JvSinteticoController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\JvSinteticoController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -49,10 +49,7 @@ Route::get('inspirate/zonas-comunes', [ProjectController::class, 'zonasComunes']
 Route::get('/paneles-acusticos', [PanelsController::class, 'index'])->name('products.panels');
 Route::get('/jv-sintetico', [JvSinteticoController::class, 'index'])->name('products.jvSintetico');
 
-
-Route::get('/', [CartController::class, 'shop'])->name('shop');
-Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
-Route::post('/add', [CartController::class, 'add'])->name('cart.store');
-Route::post('/update', [CartController::class, 'update'])->name('cart.update');
-Route::post('/remove', [CartController::class, 'remove'])->name('cart.remove');
-Route::post('/clear', [CartController::class, 'clear'])->name('cart.clear');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');

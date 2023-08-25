@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Panels;
+use App\Models\Product;
 
 class PanelsController extends Controller
 {
-    //
     public function index()
     {
-        $foamPanels = Panels::where('category', 'Foam')->get();
-        $petPanels = Panels::where('category', 'Pet')->get();
-        $mobiliarioPanels = Panels::where('category', 'Mobiliario')->get();
+        $foamPanels = Product::where('description', 'Foam')->get();
+        $petPanels = Product::where('description', 'Pet')->get();
+        $mobiliarioPanels = Product::where('description', 'Mobiliario')->get();
 
         return view('products.panels', [
             'foamPanels' => $foamPanels,

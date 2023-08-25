@@ -17,7 +17,10 @@
                     <p class="name"> {{ $panel->name }} </p>
                     <p class="price"> {{ $panel->price }} €</p>
                 </div>
-                <button>AÑADIR AL CARRITO</button>
+                <form action="{{ route('cart.add', $panel->id) }}" method="POST">
+                    @csrf
+                    <button type="submit">AÑADIR AL CARRITO</button>
+                </form>
             </div>
         @endforeach 
     </div>
@@ -34,7 +37,10 @@
                     <p class="name"> {{ $panel->name }} </p>
                     <p class="price"> {{ $panel->price }} €</p>
                 </div>
-                <button>AÑADIR AL CARRITO</button>
+                <form action="{{ route('cart.add', $panel->id) }}" method="POST">
+                    @csrf
+                    <button type="submit">AÑADIR AL CARRITO</button>
+                </form>
             </div>
         @endforeach 
     </div>
@@ -51,7 +57,10 @@
                     <p class="name"> {{ $panel->name }} </p>
                     <p class="price"> {{ $panel->price }} €</p>
                 </div>
-                <button>AÑADIR AL CARRITO</button>
+                <form action="{{ route('cart.add', $panel->id) }}" method="POST">
+                    @csrf
+                    <button type="submit">AÑADIR AL CARRITO</button>
+                </form>
             </div>
         @endforeach 
     </div>

@@ -2,110 +2,55 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use App\Models\Panels;
+use App\Models\CartItem;
+use App\Models\Product;
+
 
 class CartController extends Controller
 {
     public function index()
     {
-        $shoppingcart =  auth()->user()->shoppingcart;
-        $productos = $shoppingcart->products;
-        $total = 0;
-        foreach ($productos as $producto) {
-            $total += $producto->price * $shoppingcart->products()->where('product_id', $producto->id)->sum('quantity');
-        }  
-        return view('shoppingcarts.index', ['s' => $shoppingcart, 'total' => $total]);
+        $cartItems = CartItem::with('product')->get();
+        $cartTotal = CartItem::sum('subtotal');
+
+        return view('cart', [
+            'cartItems' => $cartItems,
+            'cartTotal' => $cartTotal,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function remove($id)
     {
-        $user = Auth::user();
-        $shoppingcart = new Shoppingcart();
-        $shoppingcart->user()->associate($user);
-        $shoppingcart->save();
-        return view('shoppingcarts.index', ['shoppingcart' => $shoppingcart]);
+        $cartItem = CartItem::findOrFail($id);
+        $cartItem->delete();
+
+        return redirect()->route('cart')->with('success', 'Producto eliminado del carrito');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function addToCart(Request $request, $id)
     {
-        $request->validate(
-            [
-                'products' => 'required',
-            ] 
-        );
-        $productId = $request->input('products');
-        $shoppingcart = auth()->user()->shoppingcart;  
-        $product = Product::findOrFail($productId);
-        $productOnCart = $shoppingcart->products->find($productId);
-        if ($productOnCart) {
-            // El producto ya está en el carrito, actualiza la cantidad
-            $shoppingcart->products()->updateExistingPivot($productId, ['quantity' =>  $shoppingcart->products()->where('product_id', $productId)->sum('quantity') + 1 ]);
+        $product = Product::find($id);
+
+        if (!$product) {
+            return redirect()->back()->withErrors("Producto no encontrado");
+        }
+
+        $cart = Session::get('cart', []);
+
+        // Si el producto ya está en el carrito, aumenta la cantidad
+        if (array_key_exists($id, $cart)) {
+            $cart[$id]['quantity']++;
         } else {
-            // El producto no está en el carrito, agrégalo con la cantidad especificada
-            $shoppingcart->products()->attach($productId, ['quantity' => 1]);
+            $cart[$id] = [
+                'product' => $product,
+                'quantity' => 1,
+            ];
         }
-        $product->stock()->increment('sold');
-        $product->stock()->decrement('stock');
-        session()->flash('message', 'Producto añadido correctamente');
-        return back();
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $shoppingcart = Shoppingcart::findOrFail($id);
-        $shoppingcart->products()->detach();
-        return back();
-    }
+        Session::put('cart', $cart);
 
-    public function clean()
-    {
-        $shoppingcart = auth()->user()->shoppingcart; 
-        $shoppingcart->products()->detach();
-        return back();
+        return redirect()->back()->with('success', 'Producto añadido al carrito');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy_product($productId)
-    {
-        $user = Auth::user();
-        $shoppingcart = auth()->user()->shoppingcart;  
-        $product = Product::findOrFail($productId);
-        $productOnCart = $shoppingcart->products->find($productId);
-        if ($productOnCart) {
-            // El producto ya está en el carrito, actualiza la cantidad
-            if($shoppingcart->products()->where('product_id', $productId)->sum('quantity') > 1){
-                $shoppingcart->products()->updateExistingPivot($productId, ['quantity' =>  $shoppingcart->products()->where('product_id', $productId)->sum('quantity') - 1 ]);
-            } else {
-                $shoppingcart->products()->detach($productId);
-            }
-            $product->stock()->decrement('sold');
-            $product->stock()->increment('stock');
-        }
-        return back();
-    }
-
 }
-

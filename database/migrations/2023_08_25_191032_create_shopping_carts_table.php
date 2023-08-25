@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('shopping_carts', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('created_at');
             $table->enum('status', ['Abierto', 'Cerrado']);
             $table->unsignedBigInteger('user_id')->nullable(); // Si tienes autenticación de usuarios
             $table->foreign('user_id')->references('id')->on('users');
