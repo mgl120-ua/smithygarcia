@@ -1,0 +1,150 @@
+body {
+    color: #333;
+    background-color: #c1c1c1;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    background-color: #c1c1c1;
+    font-size: 20px; 
+    font-weight: bold;
+    margin: 30px;
+}
+
+.nav-menu-left {
+    justify-content: flex-start; 
+    align-items: center;
+    margin-bottom: 0;
+    display: flex;
+    padding-right: 100px;
+    list-style: none;
+}
+
+
+.nav-menu-right {
+    justify-content: flex-start; 
+    align-items: center;
+    margin-bottom: 0;
+    display: flex;
+    padding-left: 200px;
+    list-style: none;
+}
+
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.logo img {
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    max-height: 150px; 
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-left: 40px;
+}
+
+.nav-item {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.nav-link {
+    text-decoration: none; 
+    color: #333; 
+}
+
+/* Estilos generales para el footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 200px;
+    flex-wrap: wrap; /* Agregamos flex-wrap para que los elementos puedan envolver si no caben en una fila */
+}
+
+.footer-logo {
+    flex: 1;
+    padding: 0 20px;
+    text-align: center; /* Centramos el contenido horizontalmente */
+}
+
+
+.footer-tienda {
+    flex: 1;
+    padding-left: 100px;
+    text-align: center; /* Centramos el contenido horizontalmente */
+}
+
+
+.footer-ayuda {
+    flex: 1;
+    padding: 0;
+    text-align: center; /* Centramos el contenido horizontalmente */
+}
+
+/* Estilos para la contenedor de redes sociales */
+.social-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centramos horizontalmente los social-items */
+}
+
+.social-item {
+    margin: 5px 5px;
+    width: 40px;
+    height: 40px;
+}
+
+.social-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+/* Estilos para el logo */
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-left: 40px;
+}
+
+.logo img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.footer-header{
+    margin-top: 30px;
+    font-family: "EB Garamond";
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.3;
+    text-align: left; 
+}
+  
+.text{
+    font-family: "EB Garamond";
+    font-size: 20px;
+    line-height: 1.3;
+    text-align: left; 
+    text-decoration: none; 
+}
+
+
+a{
+    text-decoration: none; 
+    color: #333; 
+}

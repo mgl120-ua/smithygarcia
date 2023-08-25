@@ -1,0 +1,54 @@
+h2
+{
+    color: #0844a4;
+    text-align: center; 
+    width: 100%; 
+    align-items: center;
+    justify-content: center;
+    font-family: "Playfair Display";
+    font-size: 50px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.grid-container {
+    margin-left: 60px;
+    margin-right: 60px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 60px;
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative; /* Agrega esta propiedad para que el .image-text sea relativo a este contenedor */
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative; /* Agrega esta propiedad para que el .image-text sea relativo a este contenedor */
+}
+
+.grid-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50px;
+}
+
+.image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    max-width: 100%;
+    background-color: #c1c1c1ad; 
+    font-family: "Playfair Display";
+    font-weight: bold;
+}
