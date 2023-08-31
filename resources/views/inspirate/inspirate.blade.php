@@ -35,13 +35,13 @@
     </div>
     <div class="grid-item">
         <a href="inspirate/colegios">
-            <img src="img/inspirate/default-image.jpg" alt="Imagen 5">
+            <img src="img/inspirate/colegio/colegio.jpg" alt="Imagen 5">
             <div class="image-text"> COLEGIOS </div>
         </a>
     </div>
     <div class="grid-item">
         <a href="inspirate/salas-grabacion">
-            <img src="img/inspirate/default-image.jpg" alt="Imagen 6">
+            <img src="img/inspirate/sala-grabacion/sala.jpg" alt="Imagen 6">
             <div class="image-text"> SALAS DE GRABACION </div>
         </a>
     </div>

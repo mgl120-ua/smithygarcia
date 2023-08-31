@@ -12,13 +12,14 @@
     <div class="product-container">
         @foreach($foamPanels as $panel)
             <div class="product-item">
-                <img src="{{ asset($panel->img) }}" alt="{{ $panel->name }}">
+                <img src="{{ asset($panel->image) }}" alt="{{ $panel->name }}">
                 <div class="container-text">
                     <p class="name"> {{ $panel->name }} </p>
                     <p class="price"> {{ $panel->price }} €</p>
                 </div>
                 <form action="{{ route('cart.add', $panel->id) }}" method="POST">
                     @csrf
+                    @method('POST')
                     <button type="submit">AÑADIR AL CARRITO</button>
                 </form>
             </div>
@@ -32,13 +33,14 @@
     <div class="product-container">
         @foreach($petPanels as $panel)
             <div class="product-item">
-                <img src="{{ asset($panel->img) }}" alt="{{ $panel->name }}">
+                <img src="{{ asset($panel->image) }}" alt="{{ $panel->name }}">
                 <div class="container-text">
                     <p class="name"> {{ $panel->name }} </p>
                     <p class="price"> {{ $panel->price }} €</p>
                 </div>
                 <form action="{{ route('cart.add', $panel->id) }}" method="POST">
                     @csrf
+                    @method('POST')
                     <button type="submit">AÑADIR AL CARRITO</button>
                 </form>
             </div>
@@ -52,7 +54,7 @@
     <div class="product-container">
         @foreach($mobiliarioPanels as $panel)
             <div class="product-item">
-                <img src="{{ asset($panel->img) }}" alt="{{ $panel->name }}">
+                <img src="{{ asset($panel->image) }}" alt="{{ $panel->name }}">
                 <div class="container-text">
                     <p class="name"> {{ $panel->name }} </p>
                     <p class="price"> {{ $panel->price }} €</p>

@@ -46,7 +46,7 @@
 
 <div class="project-container">
     <h3 class="project-header">¿Tienes un proyecto en mente?</h3>
-    <button>PROYECTO PERSONALIZADO</button>
+    <button type="submit">PROYECTO PERSONALIZADO</button>
 </div>
 
 <h2>ALGUNOS DE NUESTROS PROYECTOS</h2>

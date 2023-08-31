@@ -6,6 +6,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PanelsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\JvSinteticoController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -53,3 +54,8 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+
+
+Route::get('/contact', [ContactController::class, 'showContact']);
+Route::post('/contact', [ContactController::class, 'processContact']);
+

@@ -12,7 +12,7 @@
     <div class="product-container">
         @foreach($estandar as $jv)
             <div class="product-item">
-                <img src="{{ asset($jv->img) }}" alt="{{ $jv->name }}">
+                <img src="{{ asset($jv->image) }}" alt="{{ $jv->name }}">
                 <div class="container-text">
                     <p class="name"> {{ $jv->name }} </p>
                     <p class="price"> {{ $jv->price }} €</p>
@@ -29,7 +29,7 @@
     <div class="product-container">
         @foreach($ignifugo as $jv)
             <div class="product-item">
-                <img src="{{ asset($jv->img) }}" alt="{{ $jv->name }}">
+                <img src="{{ asset($jv->image) }}" alt="{{ $jv->name }}">
                 <div class="container-text">
                     <p class="name"> {{ $jv->name }} </p>
                     <p class="price"> {{ $jv->price }} €</p>

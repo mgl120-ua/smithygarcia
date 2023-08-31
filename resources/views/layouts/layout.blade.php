@@ -13,7 +13,7 @@
             <a class="nav-link" href="/inspirate">INSPIRATE </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contactanos" >CONTACTANOS</a>
+            <a class="nav-link" href="/contact" >CONTACTANOS</a>
           </li>
       </ul>
 
@@ -60,7 +60,7 @@
   <div class="footer-ayuda">
     <h3 class="footer-header">Ayuda</h3>
     <p class="text">info@smithygarcia.com</p>
-    <a href="/contactanos"><p class="text">Contactanos</p></a>
+    <a href="/contact"><p class="text">Contactanos</p></a>
   </div>
 </footer>
 

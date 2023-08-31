@@ -32,25 +32,20 @@ class CartController extends Controller
     public function addToCart(Request $request, $id)
     {
         $product = Product::find($id);
-
+    
         if (!$product) {
             return redirect()->back()->withErrors("Producto no encontrado");
         }
-
-        $cart = Session::get('cart', []);
-
-        // Si el producto ya está en el carrito, aumenta la cantidad
-        if (array_key_exists($id, $cart)) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                'product' => $product,
-                'quantity' => 1,
-            ];
-        }
-
-        Session::put('cart', $cart);
-
+    
+        CartItem::create([
+            'cart_id' => $cartId,  // Asegúrate de que este valor exista y sea válido
+            'product_id' => $product->id,
+            'quantity' => 1,
+            'subtotal' => $product->price,
+        ]);
+        
+    
         return redirect()->back()->with('success', 'Producto añadido al carrito');
     }
+    
 }
